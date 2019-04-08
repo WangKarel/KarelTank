@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>贪吃蛇模型01</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+</head>
+<style type="text/css">
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #parentId {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        border: black 1px solid;
+        top: 48%;
+        left: 48%;
+        border-radius: 20%;
+    }
+    #sonId {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 20%;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        let sonObj = document.getElementById("sonId");
+        let divObj = document.getElementById("parentId");
+        let top = false, bottom = false, left = false, right = false;
+        //获取页面宽和高
+        let winHeight = $(window).height();
+        let winWidth = $(window).width();
+        //加载子块的位置
+        sonObj.style.marginLeft = Math.random()*(winWidth-20)+"px";
+        sonObj.style.marginTop = Math.random()*(winHeight-20)+"px";
+        //加载子块的颜色（随机）
+        sonObj.style.backgroundColor=getRandomColor();
+        sonObj.style.display='block';
+
+        //控制主块移动
+        $(document).keydown(function (event) {
+            let keyNum1 = event.which;
+            switch (keyNum1) {
+                case 37:
+                    left = true;
+                    right = false;
+                    top = false;
+                    bottom = false;
+                    break;
+                case 38:
+                    top = true;
+                    left = false;
+                    right = false;
+                    bottom = false;
+                    break;
+                case 39:
+                    right = true;
+                    left = false;
+                    top = false;
+                    bottom = false;
+                    break;
+                case 40:
+                    bottom = true;
+                    left = false;
+                    right = false;
+                    top = false;
+                    break;
+                case 13:
+                    left = false;
+                    right = false;
+                    top = false;
+                    bottom = false;
+                    break;
+            }
+        });
+
+        //监听主块移动方向
+        setInterval(function () {
+            if (left) {
+                $(divObj).animate({left: "-=20px"}, 200);
+                //让div只在可视范围内移动
+                if (parseInt($(divObj).css("left")) < 20) {
+                    left = false;
+                }
+            } else if (top) {
+                $(divObj).animate({top: "-=20px"}, 200);
+                if (parseInt($(divObj).css("top")) < 20) {
+                    top = false;
+                }
+            } else if (right) {
+                $(divObj).animate({left: "+=20px"}, 200);
+                if (parseInt($(divObj).css("right")) < 20) {
+                    right = false;
+                }
+            } else if (bottom) {
+                $(divObj).animate({top: "+=20px"}, 200);
+                if (parseInt($(divObj).css("bottom")) < 20) {
+                    bottom = false;
+                }
+            }
+        }, 200);
+
+        //监听主块与子块是否重合
+        setInterval(function () {
+            //先判断主块的位置(左边距和上边距)
+            let parentLeft = parseInt($(divObj).css("left"));
+            let parentTop = parseInt($(divObj).css("top"));
+            //子块的位置
+            let sonLeft = parseInt($(sonObj).css("left"));
+            let sonTop = parseInt($(sonObj).css("top"));
+            if (parentLeft === sonLeft && parentTop === sonTop) {
+                //说明重合（即主块吃掉了子块），将子块添加到主块后面
+                alert("000")
+            }
+        },10)
+
+    });
+
+    //随机获取颜色
+    function getRandomColor() {
+        let chars = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f',];
+        let ref = '#';
+        for (let i = 1; i < 7; i++) {
+            //0-15的随机整数
+            let n = Math.floor(Math.random()*16);
+            ref += chars[n];
+        }
+        return ref;
+    }
+</script>
+<body>
+<div id="parentId"></div>
+<div id="sonId"></div>
+</body>
+</html>
