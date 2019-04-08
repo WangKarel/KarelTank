@@ -214,6 +214,7 @@
         padding: 0;
         border: black 1px solid;
         overflow: hidden;
+        background-color: #E2E2E2;
     }
 
     #divId {
@@ -224,7 +225,7 @@
         left: 20px;
         padding: 0;
         margin: 0;
-        background-color: #FFFFFF;
+        background-color: #E2E2E2;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
@@ -285,7 +286,7 @@
         bottom: 20px;
         padding: 0;
         margin: 0;
-        background-color: #FFFFFF;
+        background-color: #E2E2E2;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
@@ -436,7 +437,7 @@
         let winWidth = parseInt($(".father").css("width"));
         let winHeight = parseInt($(".father").css("height"));
 
-        let zidanSpeed1 = 20, zidanSpeed2 = 20;
+        let zidanSpeed1 = 12, zidanSpeed2 = 12;
         //1号坦克子弹移动
         function zidanfeiTop() {
             let zidanTop = $("#zidanDiv1");
@@ -445,7 +446,7 @@
                 if (zidanTop.get(0).offsetTop <= -20) {
                     zidanTop.remove();
                 } else {
-                    zidanTop.animate({top: "-=12px", left: "-=0px"}, zidanSpeed1, "linear", function () {
+                    zidanTop.animate({top: "-="+zidanSpeed1+"px", left: "-=0px"}, 20, "linear", function () {
                         let divObj2Top = divObj2.offsetTop;
                         let divObj2Left = divObj2.offsetLeft;
                         let zidanObjTop = zidanTop.offset().top;
@@ -458,7 +459,14 @@
                                 divObj2.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -470,7 +478,7 @@
                 if (winWidth - zidanRight.get(0).offsetLeft <= -20) {
                     zidanRight.remove();
                 } else {
-                    zidanRight.animate({left: "+=12px", top: "-=0px"}, zidanSpeed1, "linear", function () {
+                    zidanRight.animate({left: "+="+zidanSpeed1+"px", top: "-=0px"}, 20, "linear", function () {
                         let divObj2Top = divObj2.offsetTop;
                         let divObj2Left = divObj2.offsetLeft;
                         let zidanObjTop = zidanRight.offset().top;
@@ -483,7 +491,14 @@
                                 divObj2.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -495,7 +510,7 @@
                 if (winHeight - zidanBottom.get(0).offsetTop <= -20) {
                     zidanBottom.remove();
                 } else {
-                    zidanBottom.animate({top: "+=12px", left: "-=0px"}, zidanSpeed1, "linear", function () {
+                    zidanBottom.animate({top: "+="+zidanSpeed1+"px", left: "-=0px"}, 20, "linear", function () {
                         let divObj2Top = divObj2.offsetTop;
                         let divObj2Left = divObj2.offsetLeft;
                         let zidanObjTop = zidanBottom.offset().top;
@@ -508,7 +523,14 @@
                                 divObj2.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -520,7 +542,7 @@
                 if (zidanLeft.get(0).offsetLeft <= -20) {
                     zidanLeft.remove();
                 } else {
-                    zidanLeft.animate({left: "-=12px", top: "-=0px"}, zidanSpeed1, "linear", function () {
+                    zidanLeft.animate({left: "-="+zidanSpeed1+"px", top: "-=0px"}, 20, "linear", function () {
                         let divObj2Top = divObj2.offsetTop;
                         let divObj2Left = divObj2.offsetLeft;
                         let zidanObjTop = zidanLeft.offset().top;
@@ -533,7 +555,14 @@
                                 divObj2.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -547,7 +576,7 @@
                 if (zidanTop.get(0).offsetTop < -20) {
                     zidanTop.remove();
                 } else {
-                    zidanTop.animate({top: "-=12px", left: "-=0px"}, zidanSpeed2, "linear", function () {
+                    zidanTop.animate({top: "-="+zidanSpeed2+"px", left: "-=0px"}, 20, "linear", function () {
                         let divObjTop = divObj.offsetTop;
                         let divObjLeft = divObj.offsetLeft;
                         let zidanObjTop = zidanTop.offset().top;
@@ -560,7 +589,14 @@
                                 divObj.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -572,7 +608,7 @@
                 if (winWidth - zidanRight.get(0).offsetLeft <= -20) {
                     zidanRight.remove();
                 } else {
-                    zidanRight.animate({left: "+=12px", top: "-=0px"}, zidanSpeed2, "linear", function () {
+                    zidanRight.animate({left: "+="+zidanSpeed2+"px", top: "-=0px"}, 20, "linear", function () {
                         let divObjTop = divObj.offsetTop;
                         let divObjLeft = divObj.offsetLeft;
                         let zidanObjTop = zidanRight.offset().top;
@@ -585,7 +621,14 @@
                                 divObj.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -597,7 +640,7 @@
                 if (winHeight - zidanBottom.get(0).offsetTop <= -20) {
                     zidanBottom.remove();
                 } else {
-                    zidanBottom.animate({top: "+=12px", left: "-=0px"}, zidanSpeed2, "linear", function () {
+                    zidanBottom.animate({top: "+="+zidanSpeed2+"px", left: "-=0px"}, 20, "linear", function () {
                         let divObjTop = divObj.offsetTop;
                         let divObjLeft = divObj.offsetLeft;
                         let zidanObjTop = zidanBottom.offset().top;
@@ -610,7 +653,14 @@
                                 divObj.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -635,7 +685,14 @@
                                 divObj.style.display = "none";
                                 $(".cover").css("display","block");
                                 $(".message").css("display","block");
-                            },480)
+                            },480);
+                            let seconds = 4;
+                            setInterval(function () {
+                                seconds--;
+                                if (seconds >= 0)
+                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                else window.location.reload();
+                            },1000)
                         }
                     });
                 }
@@ -1322,7 +1379,14 @@
                     divObj2.style.display = "none";
                     $(".cover").css("display","block");
                     $(".message").css("display","block");
-                },480)
+                },480);
+                let seconds = 4;
+                setInterval(function () {
+                    seconds--;
+                    if (seconds >= 0)
+                    $(".message").find("h3").html('重新开始('+seconds+'s)');
+                    else window.location.reload();
+                },1000)
             }
         }
 
@@ -1335,7 +1399,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveFasterObj.offsetTop;
             let leftMoveObj = moveFasterObj.offsetLeft;
-            if (topMoveObj+60 >= topObj1+110 && topObj1+110 >= topMoveObj && leftObj1+170 >= leftMoveObj+60 && leftMoveObj+60 >= leftObj1) {
+            if (topMoveObj+60 > topObj1+110 && topObj1+110 > topMoveObj && leftObj1+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj1) {
                 //alert("准备加移速60%");
                 clearInterval(move60);
                 //1号坦克和加强div有重叠
@@ -1363,7 +1427,7 @@
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
                 }, 5000)
-            } else if (topMoveObj+60 >= topObj2+110 && topObj2+110 >= topMoveObj && leftObj2+170 >= leftMoveObj+60 && leftMoveObj+60 >= leftObj2) {
+            } else if (topMoveObj+60 > topObj2+110 && topObj2+110 > topMoveObj && leftObj2+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj2) {
                 //alert("准备加移速60%");
                 clearInterval(move60);
                 //2号坦克和加强div有重叠
@@ -1459,11 +1523,11 @@
                 },300);
                 shootFasterObj.style.display = "none";
                 //增加坦克外观效果
-                zidanSpeed1 = 14;
+                zidanSpeed1 = 19;
                 shootObj.style.animation = "mymove 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    zidanSpeed1 = 20;
+                    zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
                 }, 5000)
             } else if (topShootObj+60 > topObj2+110 && topObj2+110 > topShootObj && leftObj2+170 > leftShootObj+60 && leftShootObj+60 > leftObj2) {
@@ -1476,11 +1540,11 @@
                     shootFasterObj.style.display = "none";
                 },300);
                 //增加坦克外观效果
-                zidanSpeed2 = 14;
+                zidanSpeed2 = 19;
                 shootObj2.style.animation = "mymove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    zidanSpeed2 = 20;
+                    zidanSpeed2 = 12;
                     shootObj2.style.animation = "none";
                 }, 5000)
             }
@@ -1503,11 +1567,11 @@
                     shootFasterObj.style.display = "none";
                 },300);
                 //增加坦克外观效果
-                zidanSpeed1 = 10;
+                zidanSpeed1 = 24;
                 shootObj.style.animation = "mymove 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    zidanSpeed1 = 20;
+                    zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
                 }, 5000)
             } else if (topShootObj+60 > topObj2+110 && topObj2+110 > topShootObj && leftObj2+170 > leftShootObj+60 && leftShootObj+60 > leftObj2) {
@@ -1520,11 +1584,11 @@
                     shootFasterObj.style.display = "none";
                 },300);
                 //增加坦克外观效果
-                zidanSpeed2 = 10;
+                zidanSpeed2 = 24;
                 shootObj2.style.animation = "mymove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    zidanSpeed2 = 20;
+                    zidanSpeed2 = 12;
                     shootObj2.style.animation = "none";
                 }, 5000)
             }
@@ -1586,7 +1650,7 @@
 <div class="father">
     <div id="moveFaster" class="dashed-box3" style="position:absolute;width: 60px;height: 60px;
                                                     border-radius: 30%;border: none;margin: 0;text-align: center;
-                                                    padding: 0;overflow: hidden;display: none;transition: all 150ms">
+                                                    padding: 0;overflow: hidden;display: none;transition: all 300ms">
         <div class="dashed-top3"></div>
         <div class="dashed-left3"></div>
         <div class="dashed-right3"></div>
@@ -1597,7 +1661,7 @@
 
     <div id="shootFaster" class="dashed-box4" style="position:absolute;width: 60px;height: 60px;
                                                      border-radius: 30%;border: none;margin: 0;text-align: center;
-                                                     padding: 0;overflow: hidden;display: none;transition: all 150ms">
+                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
         <div class="dashed-top4"></div>
         <div class="dashed-left4"></div>
         <div class="dashed-right4"></div>
@@ -1608,7 +1672,7 @@
 
     <div id="moveOpposite" class="dashed-box5" style="position:absolute;width: 60px;height: 60px;
                                                      border-radius: 30%;border: none;margin: 0;text-align: center;
-                                                     padding: 0;overflow: hidden;display: none;transition: all 150ms">
+                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
         <div class="dashed-top5"></div>
         <div class="dashed-left5"></div>
         <div class="dashed-right5"></div>
@@ -1659,7 +1723,7 @@
 </div>
 
 <div class="message">
-    <a href="#" style="color: black" onclick="reloadPage()"><h3 style="margin-top: 12px">重新开始</h3></a>
+    <a href="#" style="color: black" onclick="reloadPage()"><h3 style="margin-top: 12px">重新开始(3s)</h3></a>
 </div>
 
 <!-- 遮罩层 -->
