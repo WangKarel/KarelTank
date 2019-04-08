@@ -1248,7 +1248,7 @@
         //随机加强效果
         let move60 = "",move100 = "",shoot60 = "",shoot100 = "",moveOPP = "";
         setInterval(function () {
-            let times = 7;
+            let times = 8;
             let chars = Math.floor(Math.random() * 4);//0-99整数
             //alert(chars);
             if (chars % 5 === 0) {//移速+60%
@@ -1359,7 +1359,7 @@
                     }
                 },1000)
             }
-        }, 12000);
+        }, 20000);
 
         //1号2号相撞
         function cashBoth() {
@@ -1399,8 +1399,8 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveFasterObj.offsetTop;
             let leftMoveObj = moveFasterObj.offsetLeft;
-            if (topMoveObj+60 > topObj1+110 && topObj1+110 > topMoveObj && leftObj1+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj1) {
-                //alert("准备加移速60%");
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
+                alert("准备加移速60%");
                 clearInterval(move60);
                 //1号坦克和加强div有重叠
                 $(moveFasterObj).css("transform", "scale(1.5)");
@@ -1426,9 +1426,9 @@
                     wheelSpeed1 = 8;
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
-                }, 5000)
-            } else if (topMoveObj+60 > topObj2+110 && topObj2+110 > topMoveObj && leftObj2+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj2) {
-                //alert("准备加移速60%");
+                }, 10000)
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
+                alert("准备加移速60%");
                 clearInterval(move60);
                 //2号坦克和加强div有重叠
                 $(moveFasterObj).css("transform", "scale(1.5)");
@@ -1447,7 +1447,7 @@
                     wheelSpeed1 = 8;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
-                }, 5000)
+                }, 10000)
             }
         }
         function getMoveSpeed2() {
@@ -1458,8 +1458,8 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveFasterObj.offsetTop;
             let leftMoveObj = moveFasterObj.offsetLeft;
-            if (topMoveObj+60 > topObj1+110 && topObj1+110 > topMoveObj && leftObj1+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj1) {
-                //alert("准备加移速100%");
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
+                alert("准备加移速100%");
                 clearInterval(move100);
                 //1号坦克和加强div有重叠
                 $(moveFasterObj).css("transform", "scale(1.5)");
@@ -1478,9 +1478,9 @@
                     wheelSpeed1 = 8;
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
-                }, 5000)
-            } else if (topMoveObj+60 > topObj2+110 && topObj2+110 > topMoveObj && leftObj2+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj2) {
-                //alert("准备加移速100%");
+                }, 10000)
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
+                alert("准备加移速100%");
                 clearInterval(move100);
                 //2号坦克和加强div有重叠
                 $(moveFasterObj).css("transform", "scale(1.5)");
@@ -1499,7 +1499,7 @@
                     wheelSpeed1 = 8;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
-                }, 5000)
+                }, 10000)
             }
         }
 
@@ -1512,7 +1512,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topShootObj = shootFasterObj.offsetTop;
             let leftShootObj = shootFasterObj.offsetLeft;
-            if (topShootObj+60 > topObj1+110 && topObj1+110 > topShootObj && leftObj1+170 > leftShootObj+60 && leftShootObj+60 > leftObj1) {
+            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj) {
                 //alert("准备加射速60%");
                 clearInterval(shoot60);
                 //1号坦克和加强div有重叠
@@ -1529,8 +1529,8 @@
                     //去掉外观效果
                     zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
-                }, 5000)
-            } else if (topShootObj+60 > topObj2+110 && topObj2+110 > topShootObj && leftObj2+170 > leftShootObj+60 && leftShootObj+60 > leftObj2) {
+                }, 10000)
+            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj) {
                 //alert("准备加射速60%");
                 clearInterval(shoot60);
                 //2号坦克和加强div有重叠
@@ -1546,7 +1546,7 @@
                     //去掉外观效果
                     zidanSpeed2 = 12;
                     shootObj2.style.animation = "none";
-                }, 5000)
+                }, 10000)
             }
         }
         function getShootSpeed2() {
@@ -1557,7 +1557,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topShootObj = shootFasterObj.offsetTop;
             let leftShootObj = shootFasterObj.offsetLeft;
-            if (topShootObj+60 > topObj1+110 && topObj1+110 > topShootObj && leftObj1+170 > leftShootObj+60 && leftShootObj+60 > leftObj1) {
+            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj) {
                 //alert("准备加射速100%");
                 clearInterval(shoot100);
                 //1号坦克和加强div有重叠
@@ -1573,8 +1573,8 @@
                     //去掉外观效果
                     zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
-                }, 5000)
-            } else if (topShootObj+60 > topObj2+110 && topObj2+110 > topShootObj && leftObj2+170 > leftShootObj+60 && leftShootObj+60 > leftObj2) {
+                }, 10000)
+            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj) {
                 //alert("准备加射速100%");
                 clearInterval(shoot100);
                 //2号坦克和加强div有重叠
@@ -1590,7 +1590,7 @@
                     //去掉外观效果
                     zidanSpeed2 = 12;
                     shootObj2.style.animation = "none";
-                }, 5000)
+                }, 10000)
             }
 
         }
@@ -1604,7 +1604,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveOppositeObj.offsetTop;
             let leftMoveObj = moveOppositeObj.offsetLeft;
-            if (topMoveObj+60 > topObj1+110 && topObj1+110 > topMoveObj && leftObj1+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj1) {
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
                 //alert("可以斜着跑了");
                 clearInterval(moveOPP);
                 //1号坦克和加强div有重叠
@@ -1620,8 +1620,8 @@
                     //去掉外观效果
                     state = 0;
                     bodyObj.style.animation = "none";
-                }, 5000)
-            } else if (topMoveObj+60 > topObj2+110 && topObj2+110 > topMoveObj && leftObj2+170 > leftMoveObj+60 && leftMoveObj+60 > leftObj2) {
+                }, 10000)
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
                 //alert("可以斜着跑了");
                 clearInterval(moveOPP);
                 //2号坦克和加强div有重叠
@@ -1637,7 +1637,7 @@
                     //去掉外观效果
                     state2 = 0;
                     bodyObj2.style.animation = "none";
-                }, 5000)
+                }, 10000)
             }
         }
     });
