@@ -1249,7 +1249,7 @@
         let move60 = "",move100 = "",shoot60 = "",shoot100 = "",moveOPP = "";
         setInterval(function () {
             let times = 8;
-            let chars = Math.floor(Math.random() * 4);//0-99整数
+            let chars = Math.floor(Math.random() * 5);//0-99整数
             //alert(chars);
             if (chars % 5 === 0) {//移速+60%
                 $(moveFasterObj).css({
@@ -1359,7 +1359,7 @@
                     }
                 },1000)
             }
-        }, 20000);
+        }, 16000);
 
         //1号2号相撞
         function cashBoth() {
@@ -1443,8 +1443,8 @@
                 wheelObj4.style.animation = "wheelMove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    floatTime1 = 60;
-                    wheelSpeed1 = 8;
+                    floatTime2 = 60;
+                    wheelSpeed2 = 8;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
                 }, 10000)
@@ -1495,8 +1495,8 @@
                 wheelObj4.style.animation = "wheelMove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
-                    floatTime1 = 60;
-                    wheelSpeed1 = 8;
+                    floatTime2 = 60;
+                    wheelSpeed2 = 8;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
                 }, 10000)
