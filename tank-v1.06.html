@@ -45,7 +45,7 @@
     .dashed-box .dashed-top {
         width: 2000px;
         height: 0;
-        border-bottom: 3px green dashed;
+        border-bottom: 3px red dashed;
         position: absolute;
         top: 0;
         left: -1400px;
@@ -53,7 +53,7 @@
     .dashed-box .dashed-left {
         width: 0;
         height: 2000px;
-        border-left: 3px green dashed;
+        border-left: 3px red dashed;
         position: absolute;
         left: 0;
         top: -1600px;
@@ -61,7 +61,7 @@
     .dashed-box .dashed-bottom {
         width: 2000px;
         height: 0;
-        border-bottom: 3px green dashed;
+        border-bottom: 3px red dashed;
         position: absolute;
         left: 0;
         bottom: 0;
@@ -69,7 +69,7 @@
     .dashed-box .dashed-right {
         width: 0;
         height: 2000px;
-        border-left: 3px green dashed;
+        border-left: 3px red dashed;
         position: absolute;
         right: 0;
         top: -1600px;
@@ -214,7 +214,7 @@
         padding: 0;
         border: black 1px solid;
         overflow: hidden;
-        background-color: #E2E2E2;
+        background-color: #499C54;
     }
 
     #divId {
@@ -225,7 +225,7 @@
         left: 20px;
         padding: 0;
         margin: 0;
-        background-color: #E2E2E2;
+        background-color: #499C54;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
@@ -242,7 +242,7 @@
         position: relative;
         width: 76px;
         height: 76px;
-        border: green 2px solid;
+        border: red 2px solid;
         border-radius: 30%;
         margin: 0;
         left: 15px;
@@ -254,7 +254,7 @@
         position: relative;
         width: 26px;
         height: 26px;
-        border: green 2px solid;
+        border: red 2px solid;
         border-radius: 30%;
         margin: 0;
         padding: 0;
@@ -265,16 +265,16 @@
     }
     @keyframes mymove {
         0% {
-            background: green;
+            background: red;
         }
         33% {
-            background: yellowgreen;
+            background: #F3686D;
         }
         66% {
-            background: yellow;
+            background: #F8A1A4;
         }
         100% {
-            background: white;
+            background: #FBCFD0;
         }
     }
 
@@ -286,7 +286,7 @@
         bottom: 20px;
         padding: 0;
         margin: 0;
-        background-color: #E2E2E2;
+        background-color: #499C54;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
@@ -788,7 +788,7 @@
                     case 1:
                         if ($("#zidanDiv1").get(0) === undefined) {
                             //设置子弹的位置
-                            $(".father").append('<div id="zidanDiv1" style="margin: 0;width: 10px;height: 20px;border-radius: 50%;background-color:black;' +
+                            $(".father").append('<div id="zidanDiv1" style="margin: 0;width: 10px;height: 20px;border-radius: 50%;background-color:red;' +
                                 'visibility: visible;position: relative;' +
                                 'top: ' + (divObjTop - 20) + 'px;' +
                                 'left: ' + (divObjLeft + 50) + 'px"></div>');
@@ -799,7 +799,7 @@
                     case 2:
                         if ($("#zidanDiv2").get(0) === undefined) {
                             //设置子弹的位置
-                            $(".father").append('<div id="zidanDiv2" style="margin: 0;width: 20px;height: 10px;border-radius: 50%;background-color:black;' +
+                            $(".father").append('<div id="zidanDiv2" style="margin: 0;width: 20px;height: 10px;border-radius: 50%;background-color:red;' +
                                 'visibility: visible;position: relative;' +
                                 'top: ' + (divObjTop + 50) + 'px;' +
                                 'left: ' + (divObjLeft + 110) + 'px"></div>');
@@ -810,7 +810,7 @@
                     case 3:
                         if ($("#zidanDiv3").get(0) === undefined) {
                             //设置子弹的位置
-                            $(".father").append('<div id="zidanDiv3" style="margin: 0;width: 10px;height: 20px;border-radius: 50%;background-color:black;' +
+                            $(".father").append('<div id="zidanDiv3" style="margin: 0;width: 10px;height: 20px;border-radius: 50%;background-color:red;' +
                                 'visibility: visible;position: relative;' +
                                 'top: ' + (divObjTop + 110) + 'px;' +
                                 'left: ' + (divObjLeft + 50) + 'px"></div>');
@@ -821,7 +821,7 @@
                     case 4:
                         if ($("#zidanDiv4").get(0) === undefined) {
                             //设置子弹的位置
-                            $(".father").append('<div id="zidanDiv4" style="margin: 0;width: 20px;height: 10px;border-radius: 50%;background-color:black;' +
+                            $(".father").append('<div id="zidanDiv4" style="margin: 0;width: 20px;height: 10px;border-radius: 50%;background-color:red;' +
                                 'visibility: visible;position: relative;' +
                                 'top: ' + (divObjTop + 50) + 'px;' +
                                 'left: ' + (divObjLeft - 20) + 'px"></div>');
@@ -888,7 +888,7 @@
         });
 
 
-        let wheelSpeed1 = 8, wheelSpeed2 = 8;
+        let wheelSpeed1 = 6, wheelSpeed2 = 6;
         //坦克移动
         let moveNum1 = setInterval(function () {
             if (left && !top && !bottom && !right) {
@@ -1015,7 +1015,7 @@
                 }
                 flag = 3;
             }
-        }, 60);
+        }, 50);
         let moveNum2 = setInterval(function () {
             if (left2 && !top2 && !bottom2 && !right2) {
                 //这里的旋转角度都是相对原始位置而言的
@@ -1136,7 +1136,7 @@
                 }
                 flag2 = 3;
             }
-        }, 60);
+        }, 50);
 
         let floatTime1 = 60, floatTime2 = 60;
         //流动虚线框（1号）
@@ -1405,7 +1405,7 @@
                 },300);
                 //增加坦克外观效果
                 floatTime1 = 30;
-                wheelSpeed1 = 13;
+                wheelSpeed1 = 10;
                 /**
                  * animation：动画效果属性: 参数1：动画绑定名称，默认为none,可在css中通过设置@keyframes来定义动画类型
                  *                        参数2：动画周期，默认为0，即无效果,可设置秒和毫秒值
@@ -1418,7 +1418,7 @@
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
                     floatTime1 = 60;
-                    wheelSpeed1 = 8;
+                    wheelSpeed1 = 6;
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
                 }, 10000)
@@ -1433,13 +1433,13 @@
                 },300);
                 //增加坦克外观效果
                 floatTime2 = 30;
-                wheelSpeed2 = 13;
+                wheelSpeed2 = 10;
                 wheelObj3.style.animation = "wheelMove2 20ms linear infinite";
                 wheelObj4.style.animation = "wheelMove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
                     floatTime2 = 60;
-                    wheelSpeed2 = 8;
+                    wheelSpeed2 = 6;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
                 }, 10000)
@@ -1464,13 +1464,13 @@
                 },300);
                 //增加坦克外观效果
                 floatTime1 = 30;
-                wheelSpeed1 = 16;
+                wheelSpeed1 = 12;
                 wheelObj1.style.animation = "wheelMove 20ms linear infinite";
                 wheelObj2.style.animation = "wheelMove 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
                     floatTime1 = 60;
-                    wheelSpeed1 = 8;
+                    wheelSpeed1 = 6;
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
                 }, 10000)
@@ -1485,13 +1485,13 @@
                 },300);
                 //增加坦克外观效果
                 floatTime2 = 30;
-                wheelSpeed2 = 16;
+                wheelSpeed2 = 12;
                 wheelObj3.style.animation = "wheelMove2 20ms linear infinite";
                 wheelObj4.style.animation = "wheelMove2 20ms linear infinite";
                 setTimeout(function () {//加强效果持续10s
                     //去掉外观效果
                     floatTime2 = 60;
-                    wheelSpeed2 = 8;
+                    wheelSpeed2 = 6;
                     wheelObj3.style.animation = "none";
                     wheelObj4.style.animation = "none";
                 }, 10000)
