@@ -214,21 +214,38 @@
         padding: 0;
         border: black 1px solid;
         overflow: hidden;
-        background-color: #61CC80;
+        background-color: #DEDDDD;
     }
 
     #divId {
         position: absolute;
         width: 109px;
         height: 109px;
-        top: 20px;
+        top: 25px;
         left: 20px;
         padding: 0;
         margin: 0;
-        background-color: #61CC80;
+        background-color: #DEDDDD;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
+    }
+    @keyframes isShooted {
+        0% {
+            opacity: 1;
+        }
+        25% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        75% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
     }
     @keyframes rotate {
         0% {
@@ -277,6 +294,24 @@
             background: #FBCFD0;
         }
     }
+    #bloodTip {
+        position: absolute;
+        padding: 0;
+        width: 90px;
+        height: 6px;
+        border: red 2px solid;
+        border-radius: 10%;
+        top: 5px;
+        left: 30px;
+    }
+    #blood {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        background-color: red;
+        width: 90px;
+        height: 100%;
+    }
 
     #divId2 {
         position: absolute;
@@ -286,7 +321,7 @@
         bottom: 20px;
         padding: 0;
         margin: 0;
-        background-color: #61CC80;
+        background-color: #DEDDDD;
         /*animation: rotate 200ms linear infinite;
         -webkit-animation: mymove 500ms ease infinite;
         -moz-animation: mymove 500ms ease infinite;*/
@@ -330,6 +365,24 @@
             background: white;
         }
     }
+    #bloodTip2 {
+        position: absolute;
+        padding: 0;
+        width: 90px;
+        height: 6px;
+        border: black 2px solid;
+        border-radius: 10%;
+        right: 30px;
+        bottom: 140px;
+    }
+    #blood2 {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        background-color: black;
+        width: 60px;
+        height: 100%;
+    }
 
     #wheelId1 {
         position: relative;
@@ -358,16 +411,16 @@
     }
     @keyframes wheelMove {
         0% {
-            background: green;
+            background: red;
         }
         33% {
-            background: yellowgreen;
+            background: #F3686D;
         }
         66% {
-            background: yellow;
+            background: #F8A1A4;
         }
         100% {
-            background: white;
+            background: #FBCFD0;
         }
     }
 
@@ -416,6 +469,10 @@
     $(function () {
         let divObj = document.getElementById("divId");
         let divObj2 = document.getElementById("divId2");
+        let bloodTip = document.getElementById('bloodTip');
+        let bloodTip2 = document.getElementById('bloodTip2');
+        let blood = document.getElementById("blood");
+        let blood2 = document.getElementById("blood2");
         let shootObj = document.getElementById("shootId");
         let bodyObj = document.getElementById("bodyId");
         let shootObj2 = document.getElementById("shootId2");
@@ -438,6 +495,8 @@
         let winHeight = parseInt($(".father").css("height"));
 
         let zidanSpeed1 = 12, zidanSpeed2 = 12;
+        //定义变量判断坦克是否被子弹击中
+        let ifShoot = 0,ifShoot2 = 0;//0：没有击中   1：被击中
         //1号坦克子弹移动
         function zidanfeiTop() {
             let zidanTop = $("#zidanDiv1");
@@ -452,21 +511,40 @@
                         let zidanObjTop = zidanTop.offset().top;
                         let zidanObjLeft = zidanTop.offset().left;
                         if (divObj2Left+120 > zidanObjLeft+10 && zidanObjLeft+10 > divObj2Left && divObj2Top+130 > zidanObjTop+20 && zidanObjTop+20 > divObj2Top) {
+                            zidanTop.remove();
                             //子弹击中坦克2
-                            //alert("2号阵亡");
-                            divObj2.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj2.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            if ($(blood2).css("width") === "30px") {
+                                $(bloodTip2).css("display","none");
+                                divObj2.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj2.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood2).css("width") === "60px") {
+                                $(blood2).css("width","30px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }else if ($(blood2).css("width") === "90px") {
+                                $(blood2).css("width","60px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -484,21 +562,40 @@
                         let zidanObjTop = zidanRight.offset().top;
                         let zidanObjLeft = zidanRight.offset().left;
                         if (divObj2Left+130 > zidanObjLeft+20 && zidanObjLeft+20 > divObj2Left && divObj2Top+120 > zidanObjTop+10 && zidanObjTop+10 > divObj2Top) {
+                            zidanRight.remove();
                             //子弹击中坦克2
-                            //alert("2号阵亡")
-                            divObj2.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj2.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            if ($(blood2).css("width") === "30px") {
+                                $(bloodTip2).css("display","none");
+                                divObj2.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj2.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood2).css("width") === "60px") {
+                                $(blood2).css("width","30px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }else if ($(blood2).css("width") === "90px") {
+                                $(blood2).css("width","60px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -516,21 +613,40 @@
                         let zidanObjTop = zidanBottom.offset().top;
                         let zidanObjLeft = zidanBottom.offset().left;
                         if (divObj2Left+120 > zidanObjLeft+10 && zidanObjLeft+10 > divObj2Left && divObj2Top+130 > zidanObjTop+20 && zidanObjTop+20 > divObj2Top) {
+                            zidanBottom.remove();
                             //子弹击中坦克2
-                            //alert("2号阵亡")
-                            divObj2.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj2.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            if ($(blood2).css("width") === "30px") {
+                                $(bloodTip2).css("display","none");
+                                divObj2.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj2.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood2).css("width") === "60px") {
+                                $(blood2).css("width","30px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }else if ($(blood2).css("width") === "90px") {
+                                $(blood2).css("width","60px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -548,21 +664,40 @@
                         let zidanObjTop = zidanLeft.offset().top;
                         let zidanObjLeft = zidanLeft.offset().left;
                         if (divObj2Left+130 > zidanObjLeft+20 && zidanObjLeft+20 > divObj2Left && divObj2Top+120 > zidanObjTop+10 && zidanObjTop+10 > divObj2Top) {
+                            zidanLeft.remove();
                             //子弹击中坦克2
-                            //alert("2号阵亡")
-                            divObj2.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj2.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            if ($(blood2).css("width") === "30px") {
+                                $(bloodTip2).css("display","none");
+                                divObj2.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj2.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood2).css("width") === "60px") {
+                                $(blood2).css("width","30px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }else if ($(blood2).css("width") === "90px") {
+                                $(blood2).css("width","60px");
+                                ifShoot2 = 1;
+                                divObj2.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj2.style.animation = "none";
+                                    ifShoot2 = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -582,21 +717,40 @@
                         let zidanObjTop = zidanTop.offset().top;
                         let zidanObjLeft = zidanTop.offset().left;
                         if (divObjLeft+120 > zidanObjLeft+10 && zidanObjLeft+10 > divObjTop && divObjTop+130 > zidanObjTop+20 && zidanObjTop+20 > divObjTop) {
-                            //子弹击中坦克1
-                            //alert("1号阵亡")
-                            divObj.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            zidanTop.remove();
+                            //子弹击中坦克2
+                            if ($(blood).css("width") === "30px") {
+                                $(bloodTip).css("display","none");
+                                divObj.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood).css("width") === "60px") {
+                                $(blood).css("width","30px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }else if ($(blood).css("width") === "90px") {
+                                $(blood).css("width","60px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -614,21 +768,40 @@
                         let zidanObjTop = zidanRight.offset().top;
                         let zidanObjLeft = zidanRight.offset().left;
                         if (divObjLeft+130 > zidanObjLeft+20 && zidanObjLeft+20 > divObjLeft && divObjTop+120 > zidanObjTop+10 && zidanObjTop+10 > divObjTop) {
-                            //子弹击中坦克1
-                            //alert("1号阵亡")
-                            divObj.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            zidanRight.remove();
+                            //子弹击中坦克2
+                            if ($(blood).css("width") === "30px") {
+                                $(bloodTip).css("display","none");
+                                divObj.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood).css("width") === "60px") {
+                                $(blood).css("width","30px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }else if ($(blood).css("width") === "90px") {
+                                $(blood).css("width","60px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -646,21 +819,40 @@
                         let zidanObjTop = zidanBottom.offset().top;
                         let zidanObjLeft = zidanBottom.offset().left;
                         if (divObjLeft+120 > zidanObjLeft+10 && zidanObjLeft+10 > divObjLeft && divObjTop+130 > zidanObjTop+20 && zidanObjTop+20 > divObjTop) {
-                            //子弹击中坦克1
-                            //alert("1号阵亡")
-                            divObj.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            zidanBottom.remove();
+                            //子弹击中坦克2
+                            if ($(blood).css("width") === "30px") {
+                                $(bloodTip).css("display","none");
+                                divObj.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood).css("width") === "60px") {
+                                $(blood).css("width","30px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }else if ($(blood).css("width") === "90px") {
+                                $(blood).css("width","60px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -678,21 +870,40 @@
                         let zidanObjTop = zidanLeft.offset().top;
                         let zidanObjLeft = zidanLeft.offset().left;
                         if (divObjLeft+130 > zidanObjLeft+20 && zidanObjLeft+20 > divObjLeft && divObjTop+120 > zidanObjTop+10 && zidanObjTop+10 > divObjTop) {
-                            //子弹击中坦克1
-                            //alert("1号阵亡")
-                            divObj.style.animation = "rotate 500ms linear 1";
-                            setTimeout(function () {
-                                divObj.style.display = "none";
-                                $(".cover").css("display","block");
-                                $(".message").css("display","block");
-                            },480);
-                            let seconds = 4;
-                            setInterval(function () {
-                                seconds--;
-                                if (seconds >= 0)
-                                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                                else window.location.reload();
-                            },1000)
+                            zidanLeft.remove();
+                            //子弹击中坦克2
+                            if ($(blood).css("width") === "30px") {
+                                $(bloodTip).css("display","none");
+                                divObj.style.animation = "rotate 500ms linear 1";
+                                setTimeout(function () {
+                                    divObj.style.display = "none";
+                                    $(".cover").css("display","block");
+                                    $(".message").css("display","block");
+                                },480);
+                                let seconds = 4;
+                                setInterval(function () {
+                                    seconds--;
+                                    if (seconds >= 0)
+                                        $(".message").find("h3").html('重新开始('+seconds+'s)');
+                                    else window.location.reload();
+                                },1000)
+                            }else if ($(blood).css("width") === "60px") {
+                                $(blood).css("width","30px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }else if ($(blood).css("width") === "90px") {
+                                $(blood).css("width","60px");
+                                ifShoot = 1;
+                                divObj.style.animation = "isShooted 400ms linear infinite";
+                                setTimeout(function () {
+                                    divObj.style.animation = "none";
+                                    ifShoot = 0;
+                                },1200)
+                            }
                         }
                     });
                 }
@@ -903,6 +1114,7 @@
                     $(divObj).animate({left: "-=0px"}, 1);
                 } else {
                     $(divObj).animate({left: "-=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip).animate({left: "-=" + wheelSpeed1 + "px"}, 20, "linear");
                 }
                 flag = 4;
             } else if (left && top && !bottom && !right) {
@@ -915,6 +1127,10 @@
                             left: "-=" + (wheelSpeed1-3) + "px",
                             top: "-=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip).animate({
+                            left: "-=" + (wheelSpeed1-3) + "px",
+                            top: "-=" + (wheelSpeed1-3) + "px"
+                        }, 20, "linear");
                     }
                     flag = 0;
                 } else {
@@ -924,6 +1140,7 @@
                         $(divObj).animate({left: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({left: "-=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip).animate({left: "-=" + wheelSpeed1 + "px"}, 20, "linear");
                     }
                     flag = 4;
                 }
@@ -937,6 +1154,10 @@
                             left: "-=" + (wheelSpeed1-3) + "px",
                             top: "+=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip).animate({
+                            left: "-=" + (wheelSpeed1-3) + "px",
+                            top: "+=" + (wheelSpeed1-3) + "px"
+                        }, 20, "linear");
                     }
                     flag = 0;
                 } else {
@@ -945,6 +1166,7 @@
                         $(divObj).animate({top: "+=0px"}, 1);
                     } else {
                         $(divObj).animate({top: "+=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip).animate({top: "+=" + wheelSpeed1 + "px"}, 20, "linear");
                     }
                     flag = 3;
                 }
@@ -954,6 +1176,7 @@
                     $(divObj).animate({top: "-=0px"}, 1);
                 } else {
                     $(divObj).animate({top: "-=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip).animate({top: "-=" + wheelSpeed1 + "px"}, 20, "linear");
                 }
                 flag = 1;
             } else if (top && right && !left && !bottom) {
@@ -966,6 +1189,10 @@
                             left: "+=" + (wheelSpeed1-3) + "px",
                             top: "-=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip).animate({
+                            left: "+=" + (wheelSpeed1-3) + "px",
+                            top: "-=" + (wheelSpeed1-3) + "px"
+                        }, 20, "linear");
                     }
                     flag = 0;
                 } else {
@@ -974,6 +1201,7 @@
                         $(divObj).animate({top: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({top: "-=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip).animate({top: "-=" + wheelSpeed1 + "px"}, 20, "linear");
                     }
                     flag = 1;
                 }
@@ -983,6 +1211,7 @@
                     $(divObj).animate({left: "+=0px"}, 1);
                 } else {
                     $(divObj).animate({left: "+=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip).animate({left: "+=" + wheelSpeed1 + "px"}, 20, "linear");
                 }
                 flag = 2;
             } else if (right && bottom && !top && !left) {
@@ -995,6 +1224,10 @@
                             left: "+=" + (wheelSpeed1-3) + "px",
                             top: "+=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip).animate({
+                            left: "+=" + (wheelSpeed1-3) + "px",
+                            top: "+=" + (wheelSpeed1-3) + "px"
+                        }, 20, "linear");
                     }
                     flag = 0;
                 } else {
@@ -1003,6 +1236,7 @@
                         $(divObj).animate({left: "+=0px"}, 1);
                     } else {
                         $(divObj).animate({left: "+=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip).animate({left: "+=" + wheelSpeed1 + "px"}, 20, "linear");
                     }
                     flag = 2;
                 }
@@ -1012,6 +1246,7 @@
                     $(divObj).animate({top: "+=0px"}, 1);
                 } else {
                     $(divObj).animate({top: "+=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip).animate({top: "+=" + wheelSpeed1 + "px"}, 20, "linear");
                 }
                 flag = 3;
             }
@@ -1024,6 +1259,7 @@
                     $(divObj2).animate({left: "-=0px"}, 1);
                 } else {
                     $(divObj2).animate({left: "-=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip2).animate({left: "-=" + wheelSpeed2 + "px"}, 20, "linear");
                 }
                 flag2 = 4;
             } else if (left2 && top2 && !bottom2 && !right2) {
@@ -1036,6 +1272,10 @@
                             left: "-=" + (wheelSpeed2-3) + "px",
                             top: "-=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({
+                            left: "-=" + (wheelSpeed2-3) + "px",
+                            top: "-=" + (wheelSpeed2-3) + "px"
+                        }, 20, "linear");
                     }
                     flag2 = 0;
                 }else {
@@ -1045,6 +1285,7 @@
                         $(divObj2).animate({left: "-=0px"}, 1);
                     } else {
                         $(divObj2).animate({left: "-=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({left: "-=" + wheelSpeed2 + "px"}, 20, "linear");
                     }
                     flag2 = 4;
                 }
@@ -1058,6 +1299,10 @@
                             left: "-=" + (wheelSpeed2-3) + "px",
                             top: "+=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({
+                            left: "-=" + (wheelSpeed2-3) + "px",
+                            top: "+=" + (wheelSpeed2-3) + "px"
+                        }, 20, "linear");
                     }
                     flag2 = 0;
                 } else {
@@ -1066,6 +1311,7 @@
                         $(divObj2).animate({top: "+=0px"}, 1);
                     } else {
                         $(divObj2).animate({top: "+=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({top: "+=" + wheelSpeed2 + "px"}, 20, "linear");
                     }
                     flag2 = 3;
                 }
@@ -1075,6 +1321,7 @@
                     $(divObj2).animate({top: "-=0px"}, 1);
                 } else {
                     $(divObj2).animate({top: "-=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip2).animate({top: "-=" + wheelSpeed2 + "px"}, 20, "linear");
                 }
                 flag2 = 1;
             } else if (top2 && right2 && !left2 && !bottom2) {
@@ -1087,6 +1334,10 @@
                             left: "+=" + (wheelSpeed2-3) + "px",
                             top: "-=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({
+                            left: "+=" + (wheelSpeed2-3) + "px",
+                            top: "-=" + (wheelSpeed2-3) + "px"
+                        }, 20, "linear");
                     }
                     flag2 = 0;
                 } else {
@@ -1095,6 +1346,7 @@
                         $(divObj2).animate({top: "-=0px"}, 1);
                     } else {
                         $(divObj2).animate({top: "-=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({top: "-=" + wheelSpeed2 + "px"}, 20, "linear");
                     }
                     flag2 = 1;
                 }
@@ -1104,6 +1356,7 @@
                     $(divObj2).animate({left: "+=0px"}, 1);
                 } else {
                     $(divObj2).animate({left: "+=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip2).animate({left: "+=" + wheelSpeed2 + "px"}, 20, "linear");
                 }
                 flag2 = 2;
             } else if (right2 && bottom2 && !top2 && !left2) {
@@ -1116,6 +1369,10 @@
                             left: "+=" + (wheelSpeed2-3) + "px",
                             top: "+=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({
+                            left: "+=" + (wheelSpeed2-3) + "px",
+                            top: "+=" + (wheelSpeed2-3) + "px"
+                        }, 20, "linear");
                     }
                     flag2 = 0;
                 } else {
@@ -1124,6 +1381,7 @@
                         $(divObj2).animate({left: "+=0px"}, 1);
                     } else {
                         $(divObj2).animate({left: "+=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                        $(bloodTip2).animate({left: "+=" + wheelSpeed2 + "px"}, 20, "linear");
                     }
                     flag2 = 2;
                 }
@@ -1133,6 +1391,7 @@
                     $(divObj2).animate({top: "+=0px"}, 1);
                 } else {
                     $(divObj2).animate({top: "+=" + wheelSpeed2 + "px"}, 20, "linear", cashBoth);
+                    $(bloodTip2).animate({top: "+=" + wheelSpeed2 + "px"}, 20, "linear");
                 }
                 flag2 = 3;
             }
@@ -1394,7 +1653,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveFasterObj.offsetTop;
             let leftMoveObj = moveFasterObj.offsetLeft;
-            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj && moveFasterObj.style.display==="block") {
                 //alert("准备加移速60%");
                 clearInterval(move60);
                 //1号坦克和加强div有重叠
@@ -1422,7 +1681,7 @@
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
                 }, 10000)
-            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj && moveFasterObj.style.display==="block") {
                 //alert("准备加移速60%");
                 clearInterval(move60);
                 //2号坦克和加强div有重叠
@@ -1453,7 +1712,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveFasterObj.offsetTop;
             let leftMoveObj = moveFasterObj.offsetLeft;
-            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj && moveFasterObj.style.display==="block") {
                 //alert("准备加移速100%");
                 clearInterval(move100);
                 //1号坦克和加强div有重叠
@@ -1474,7 +1733,7 @@
                     wheelObj1.style.animation = "none";
                     wheelObj2.style.animation = "none";
                 }, 10000)
-            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj && moveFasterObj.style.display==="block") {
                 //alert("准备加移速100%");
                 clearInterval(move100);
                 //2号坦克和加强div有重叠
@@ -1507,7 +1766,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topShootObj = shootFasterObj.offsetTop;
             let leftShootObj = shootFasterObj.offsetLeft;
-            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj) {
+            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj && shootFasterObj.style.display==="block") {
                 //alert("准备加射速60%");
                 clearInterval(shoot60);
                 //1号坦克和加强div有重叠
@@ -1525,7 +1784,7 @@
                     zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
                 }, 10000)
-            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj) {
+            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj && shootFasterObj.style.display==="block") {
                 //alert("准备加射速60%");
                 clearInterval(shoot60);
                 //2号坦克和加强div有重叠
@@ -1552,7 +1811,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topShootObj = shootFasterObj.offsetTop;
             let leftShootObj = shootFasterObj.offsetLeft;
-            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj) {
+            if (topShootObj+170 > topObj1+110 && topObj1+110 > topShootObj && leftShootObj+170 > leftObj1+110 && leftObj1+110 > leftShootObj && shootFasterObj.style.display==="block") {
                 //alert("准备加射速100%");
                 clearInterval(shoot100);
                 //1号坦克和加强div有重叠
@@ -1569,7 +1828,7 @@
                     zidanSpeed1 = 12;
                     shootObj.style.animation = "none";
                 }, 10000)
-            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj) {
+            } else if (topShootObj+170 > topObj2+110 && topObj2+110 > topShootObj && leftShootObj+170 > leftObj2+110 && leftObj2+110 > leftShootObj && shootFasterObj.style.display==="block") {
                 //alert("准备加射速100%");
                 clearInterval(shoot100);
                 //2号坦克和加强div有重叠
@@ -1599,7 +1858,7 @@
             let leftObj2 = divObj2.offsetLeft;
             let topMoveObj = moveOppositeObj.offsetTop;
             let leftMoveObj = moveOppositeObj.offsetLeft;
-            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj) {
+            if (topMoveObj+170 > topObj1+110 && topObj1+110 > topMoveObj && leftMoveObj+170 > leftObj1+110 && leftObj1+110 > leftMoveObj && moveOppositeObj.style.display==="block") {
                 //alert("可以斜着跑了");
                 clearInterval(moveOPP);
                 //1号坦克和加强div有重叠
@@ -1616,7 +1875,7 @@
                     state = 0;
                     bodyObj.style.animation = "none";
                 }, 10000)
-            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj) {
+            } else if (topMoveObj+170 > topObj2+110 && topObj2+110 > topMoveObj && leftMoveObj+170 > leftObj2+110 && leftObj2+110 > leftMoveObj && moveOppositeObj.style.display==="block") {
                 //alert("可以斜着跑了");
                 clearInterval(moveOPP);
                 //2号坦克和加强div有重叠
@@ -1643,21 +1902,21 @@
             let keyNum = event.which;
             if (event.ctrlKey && keyNum === 88) {//ctrl+x
                 if (color % 4 === 0) {
+                    $(".father").css("background-color","#98E0AD");
+                    $("#divId").css("background-color","#98E0AD");
+                    $("#divId2").css("background-color","#98E0AD");
+                }else if (color % 4 === 1) {
+                    $(".father").css("background-color","#FFCCA9");
+                    $("#divId").css("background-color","#FFCCA9");
+                    $("#divId2").css("background-color","#FFCCA9");
+                }else if (color % 4 === 2) {
+                    $(".father").css("background-color","#AAAEEB");
+                    $("#divId").css("background-color","#AAAEEB");
+                    $("#divId2").css("background-color","#AAAEEB");
+                }else if (color % 4 === 3) {
                     $(".father").css("background-color","#DEDDDD");
                     $("#divId").css("background-color","#DEDDDD");
                     $("#divId2").css("background-color","#DEDDDD");
-                }else if (color % 4 === 1) {
-                    $(".father").css("background-color","#FFB27D");
-                    $("#divId").css("background-color","#FFB27D");
-                    $("#divId2").css("background-color","#FFB27D");
-                }else if (color % 4 === 2) {
-                    $(".father").css("background-color","#7A81DE");
-                    $("#divId").css("background-color","#7A81DE");
-                    $("#divId2").css("background-color","#7A81DE");
-                }else if (color % 4 === 3) {
-                    $(".father").css("background-color","#61CC80");
-                    $("#divId").css("background-color","#61CC80");
-                    $("#divId2").css("background-color","#61CC80");
                 }
             }
         });
@@ -1702,7 +1961,10 @@
         <h5 class="moveOpposite" style="margin-top: 0;color: goldenrod">(7s)</h5>
     </div>
 
-    <!--1号绿色坦克-->
+    <!--1号坦克-->
+    <div id="bloodTip">
+        <div id="blood"></div>
+    </div>
     <div id="divId">
         <div id="shootId"></div>
         <div id="bodyId" style="text-align: center;">
@@ -1722,7 +1984,10 @@
         </div>
     </div>
 
-    <!--2号黑色坦克-->
+    <!--2号坦克-->
+    <div id="bloodTip2">
+        <div id="blood2"></div>
+    </div>
     <div id="divId2">
         <div id="shootId2"></div>
         <div id="bodyId2" style="text-align: center;">
