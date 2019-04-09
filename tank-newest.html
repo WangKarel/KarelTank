@@ -912,8 +912,8 @@
                         $(divObj).animate({left: "-=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({
-                            left: "-=" + (wheelSpeed1-2) + "px",
-                            top: "-=" + (wheelSpeed1-2) + "px"
+                            left: "-=" + (wheelSpeed1-3) + "px",
+                            top: "-=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag = 0;
@@ -921,11 +921,6 @@
                     //这里的旋转角度都是相对原始位置而言的
                     $("#divId").css("transform", "rotate(270deg)");
                     if (parseInt($(divObj).css("left")) < wheelSpeed1) {
-                        /**
-                         * animate用于改变参数属性，与其他改变属性方法不同，animate是动态改变，其他的为瞬时改变；
-                         * animate第二个参数为延时，当animate在定时器中使用的时候一定要加上第二个参数，且数值必须小于定时器延时
-                         * 否则定时器无效或延时错误
-                         */
                         $(divObj).animate({left: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({left: "-=" + wheelSpeed1 + "px"}, 20, "linear", cashBoth);
@@ -939,8 +934,8 @@
                         $(divObj).animate({left: "-=0px", top: "+=0px"}, 1);
                     } else {
                         $(divObj).animate({
-                            left: "-=" + (wheelSpeed1-2) + "px",
-                            top: "+=" + (wheelSpeed1-2) + "px"
+                            left: "-=" + (wheelSpeed1-3) + "px",
+                            top: "+=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag = 0;
@@ -968,8 +963,8 @@
                         $(divObj).animate({left: "+=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({
-                            left: "+=" + (wheelSpeed1-2) + "px",
-                            top: "-=" + (wheelSpeed1-2) + "px"
+                            left: "+=" + (wheelSpeed1-3) + "px",
+                            top: "-=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag = 0;
@@ -997,8 +992,8 @@
                         $(divObj).animate({left: "+=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj).animate({
-                            left: "+=" + (wheelSpeed1-2) + "px",
-                            top: "+=" + (wheelSpeed1-2) + "px"
+                            left: "+=" + (wheelSpeed1-3) + "px",
+                            top: "+=" + (wheelSpeed1-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag = 0;
@@ -1038,8 +1033,8 @@
                         $(divObj2).animate({left: "-=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj2).animate({
-                            left: "-=" + (wheelSpeed2-2) + "px",
-                            top: "-=" + (wheelSpeed2-2) + "px"
+                            left: "-=" + (wheelSpeed2-3) + "px",
+                            top: "-=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag2 = 0;
@@ -1060,8 +1055,8 @@
                         $(divObj2).animate({left: "-=0px", top: "+=0px"}, 1);
                     } else {
                         $(divObj2).animate({
-                            left: "-=" + (wheelSpeed2-2) + "px",
-                            top: "+=" + (wheelSpeed2-2) + "px"
+                            left: "-=" + (wheelSpeed2-3) + "px",
+                            top: "+=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag2 = 0;
@@ -1089,8 +1084,8 @@
                         $(divObj2).animate({left: "+=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj2).animate({
-                            left: "+=" + (wheelSpeed2-2) + "px",
-                            top: "-=" + (wheelSpeed2-2) + "px"
+                            left: "+=" + (wheelSpeed2-3) + "px",
+                            top: "-=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag2 = 0;
@@ -1118,8 +1113,8 @@
                         $(divObj2).animate({left: "+=0px", top: "-=0px"}, 1);
                     } else {
                         $(divObj2).animate({
-                            left: "+=" + (wheelSpeed2-2) + "px",
-                            top: "+=" + (wheelSpeed2-2) + "px"
+                            left: "+=" + (wheelSpeed2-3) + "px",
+                            top: "+=" + (wheelSpeed2-3) + "px"
                         }, 20, "linear", cashBoth);
                     }
                     flag2 = 0;
@@ -1249,7 +1244,7 @@
         let move60 = "",move100 = "",shoot60 = "",shoot100 = "",moveOPP = "";
         setInterval(function () {
             let times = 8;
-            let chars = Math.floor(Math.random() * 5);//0-99整数
+            let chars = Math.floor(Math.random() * 5);//0-4整数
             //alert(chars);
             if (chars % 5 === 0) {//移速+60%
                 $(moveFasterObj).css({

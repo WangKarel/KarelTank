@@ -206,6 +206,7 @@ a {
     padding: 0;
     border: black 1px solid;
     overflow: hidden;
+    background-color: #E2E2E2;
 }
 
 #divId {
@@ -216,7 +217,7 @@ a {
     left: 20px;
     padding: 0;
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: #E2E2E2;
     /*animation: rotate 200ms linear infinite;
     -webkit-animation: mymove 500ms ease infinite;
     -moz-animation: mymove 500ms ease infinite;*/
@@ -277,7 +278,7 @@ a {
     bottom: 20px;
     padding: 0;
     margin: 0;
-    background-color: #FFFFFF;
+    background-color: #E2E2E2;
     /*animation: rotate 200ms linear infinite;
     -webkit-animation: mymove 500ms ease infinite;
     -moz-animation: mymove 500ms ease infinite;*/
