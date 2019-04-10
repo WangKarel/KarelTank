@@ -1,226 +1,26 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-a {
-    text-decoration: none;
-}
-.cover{
-    display:none;
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    z-index:1;
-    background-color:#000;
-    opacity:0.3;
-    transition: all 0.2s;
-}
-.message {
-    display:none;
-    position:absolute;
-    z-index:2;
-    background:goldenrod;
-    width: 120px;
-    height: 50px;
-    top: 40%;
-    left:45%;
-    border-radius: 8%;
-    text-align: center;
-    padding: 0;
-    transition: all 0.2s;
-}
-
-.dashed-box .dashed-top {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px green dashed;
-    position: absolute;
-    top: 0;
-    left: -1400px;
-}
-.dashed-box .dashed-left {
-    width: 0;
-    height: 2000px;
-    border-left: 3px green dashed;
-    position: absolute;
-    left: 0;
-    top: -1600px;
-}
-.dashed-box .dashed-bottom {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px green dashed;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.dashed-box .dashed-right {
-    width: 0;
-    height: 2000px;
-    border-left: 3px green dashed;
-    position: absolute;
-    right: 0;
-    top: -1600px;
-}
-
-.dashed-box2 .dashed-top2 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px black dashed;
-    position: absolute;
-    top: 0;
-    left: -1400px;
-}
-.dashed-box2 .dashed-left2 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px black dashed;
-    position: absolute;
-    left: 0;
-    top: -1600px;
-}
-.dashed-box2 .dashed-bottom2 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px black dashed;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.dashed-box2 .dashed-right2 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px black dashed;
-    position: absolute;
-    right: 0;
-    top: -1600px;
-}
-
-.dashed-box3 .dashed-top3 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px darkblue dashed;
-    position: absolute;
-    top: 0;
-    left: -1400px;
-}
-.dashed-box3 .dashed-left3 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px darkblue dashed;
-    position: absolute;
-    left: 0;
-    top: -1600px;
-}
-.dashed-box3 .dashed-bottom3 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px darkblue dashed;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.dashed-box3 .dashed-right3 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px darkblue dashed;
-    position: absolute;
-    right: 0;
-    top: -1600px;
-}
-
-.dashed-box4 .dashed-top4 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px orangered dashed;
-    position: absolute;
-    top: 0;
-    left: -1400px;
-}
-.dashed-box4 .dashed-left4 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px orangered dashed;
-    position: absolute;
-    left: 0;
-    top: -1600px;
-}
-.dashed-box4 .dashed-bottom4 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px orangered dashed;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.dashed-box4 .dashed-right4 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px orangered dashed;
-    position: absolute;
-    right: 0;
-    top: -1600px;
-}
-
-.dashed-box5 .dashed-top5 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px goldenrod dashed;
-    position: absolute;
-    top: 0;
-    left: -1400px;
-}
-.dashed-box5 .dashed-left5 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px goldenrod dashed;
-    position: absolute;
-    left: 0;
-    top: -1600px;
-}
-.dashed-box5 .dashed-bottom5 {
-    width: 2000px;
-    height: 0;
-    border-bottom: 3px goldenrod dashed;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.dashed-box5 .dashed-right5 {
-    width: 0;
-    height: 2000px;
-    border-left: 3px goldenrod dashed;
-    position: absolute;
-    right: 0;
-    top: -1600px;
-}
-
-.father {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    border: black 1px solid;
-    overflow: hidden;
-    background-color: #E2E2E2;
-}
-
 #divId {
     position: absolute;
     width: 109px;
     height: 109px;
-    top: 20px;
+    top: 25px;
     left: 20px;
     padding: 0;
     margin: 0;
-    background-color: #E2E2E2;
+    background-color: #DEDDDD;
     /*animation: rotate 200ms linear infinite;
     -webkit-animation: mymove 500ms ease infinite;
     -moz-animation: mymove 500ms ease infinite;*/
+}
+@keyframes isShooted {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 @keyframes rotate {
     0% {
@@ -234,7 +34,7 @@ a {
     position: relative;
     width: 76px;
     height: 76px;
-    border: green 2px solid;
+    border: red 2px solid;
     border-radius: 30%;
     margin: 0;
     left: 15px;
@@ -246,7 +46,7 @@ a {
     position: relative;
     width: 26px;
     height: 26px;
-    border: green 2px solid;
+    border: red 2px solid;
     border-radius: 30%;
     margin: 0;
     padding: 0;
@@ -257,17 +57,35 @@ a {
 }
 @keyframes mymove {
     0% {
-        background: green;
+        background: red;
     }
     33% {
-        background: yellowgreen;
+        background: #F3686D;
     }
     66% {
-        background: yellow;
+        background: #F8A1A4;
     }
     100% {
-        background: white;
+        background: #FBCFD0;
     }
+}
+#bloodTip {
+    position: absolute;
+    padding: 0;
+    width: 81px;
+    height: 6px;
+    border: red 2px solid;
+    border-radius: 15%;
+    top: 5px;
+    left: 34px;
+}
+#blood {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: red;
+    width: 81px;
+    height: 100%;
 }
 
 #divId2 {
@@ -278,7 +96,7 @@ a {
     bottom: 20px;
     padding: 0;
     margin: 0;
-    background-color: #E2E2E2;
+    background-color: #DEDDDD;
     /*animation: rotate 200ms linear infinite;
     -webkit-animation: mymove 500ms ease infinite;
     -moz-animation: mymove 500ms ease infinite;*/
@@ -322,6 +140,24 @@ a {
         background: white;
     }
 }
+#bloodTip2 {
+    position: absolute;
+    padding: 0;
+    width: 81px;
+    height: 6px;
+    border: black 2px solid;
+    border-radius: 15%;
+    right: 34px;
+    bottom: 140px;
+}
+#blood2 {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: black;
+    width: 81px;
+    height: 100%;
+}
 
 #wheelId1 {
     position: relative;
@@ -350,16 +186,16 @@ a {
 }
 @keyframes wheelMove {
     0% {
-        background: green;
+        background: red;
     }
     33% {
-        background: yellowgreen;
+        background: #F3686D;
     }
     66% {
-        background: yellow;
+        background: #F8A1A4;
     }
     100% {
-        background: white;
+        background: #FBCFD0;
     }
 }
 

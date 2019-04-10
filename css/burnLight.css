@@ -1,0 +1,113 @@
+#burnLightX {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    /*animation: light1 1000ms linear infinite;*/
+    display: none;
+    bottom: 0;
+}
+
+@keyframes light1 {
+    0% {
+        background: #B21016;
+    }
+    33% {
+        background: #F3686D;
+    }
+    66% {
+        background: #F8A1A4;
+    }
+    100% {
+        background: #FBCFD0;
+    }
+}
+
+@keyframes light2 {
+    0% {
+        background: #BF5B16;
+    }
+    33% {
+        background: #FFB27D;
+    }
+    66% {
+        background: #FFCCA9;
+    }
+    100% {
+        background: #FFE5D4;
+    }
+}
+
+@keyframes light3 {
+    0% {
+        background: #138535;
+    }
+    33% {
+        background: #6BD089;
+    }
+    66% {
+        background: #98E0AD;
+    }
+    100% {
+        background: #C8EFD4;
+    }
+}
+
+@keyframes light4 {
+    0% {
+        background: #007AAE;
+    }
+    33% {
+        background: #60C5F1;
+    }
+    66% {
+        background: #94D8F6;
+    }
+    100% {
+        background: #C8EBFA;
+    }
+}
+
+@keyframes light5 {
+    0% {
+        background: #232B99;
+    }
+    33% {
+        background: #8389E0;
+    }
+    66% {
+        background: #AAAEEB;
+    }
+    100% {
+        background: #D3D5F5;
+    }
+}
+
+@keyframes light6 {
+    0% {
+        background: #7A297B;
+    }
+    33% {
+        background: #C785C8;
+    }
+    66% {
+        background: #DAAADB;
+    }
+    100% {
+        background: #EDD3ED;
+    }
+}
+
+@keyframes light7 {
+    0% {
+        background: #BFB500;
+    }
+    33% {
+        background: #FFF766;
+    }
+    66% {
+        background: #FFFA99;
+    }
+    100% {
+        background: #FFFCCC;
+    }
+}

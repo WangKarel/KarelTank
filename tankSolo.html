@@ -3,494 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>坦克大战模型v1.06</title>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/float.css" />
+    <link rel="stylesheet" type="text/css" href="css/tank.css" />
+    <link rel="stylesheet" type="text/css" href="css/burnLight.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
 </head>
-<style type="text/css">
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-    }
-    a {
-        text-decoration: none;
-    }
-    .cover{
-        display:none;
-        width:100%;
-        height:100%;
-        position:absolute;
-        top:0;
-        left:0;
-        z-index:1;
-        background-color:#000;
-        opacity:0.3;
-        transition: all 0.2s;
-    }
-    .message {
-        display:none;
-        position:absolute;
-        z-index:2;
-        background:goldenrod;
-        width: 120px;
-        height: 50px;
-        top: 40%;
-        left:45%;
-        border-radius: 8%;
-        text-align: center;
-        padding: 0;
-        transition: all 0.2s;
-    }
-
-    .dashed-box .dashed-top {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px red dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box .dashed-left {
-        width: 0;
-        height: 2000px;
-        border-left: 3px red dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box .dashed-bottom {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px red dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box .dashed-right {
-        width: 0;
-        height: 2000px;
-        border-left: 3px red dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .dashed-box2 .dashed-top2 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px black dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box2 .dashed-left2 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px black dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box2 .dashed-bottom2 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px black dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box2 .dashed-right2 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px black dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .dashed-box3 .dashed-top3 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px darkblue dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box3 .dashed-left3 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px darkblue dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box3 .dashed-bottom3 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px darkblue dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box3 .dashed-right3 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px darkblue dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .dashed-box4 .dashed-top4 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px orangered dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box4 .dashed-left4 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px orangered dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box4 .dashed-bottom4 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px orangered dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box4 .dashed-right4 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px orangered dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .dashed-box5 .dashed-top5 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px goldenrod dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box5 .dashed-left5 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px goldenrod dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box5 .dashed-bottom5 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px goldenrod dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box5 .dashed-right5 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px goldenrod dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .dashed-box6 .dashed-top6 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px green dashed;
-        position: absolute;
-        top: 0;
-        left: -1400px;
-    }
-    .dashed-box6 .dashed-left6 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px green dashed;
-        position: absolute;
-        left: 0;
-        top: -1600px;
-    }
-    .dashed-box6 .dashed-bottom6 {
-        width: 2000px;
-        height: 0;
-        border-bottom: 3px green dashed;
-        position: absolute;
-        left: 0;
-        bottom: 0;
-    }
-    .dashed-box6 .dashed-right6 {
-        width: 0;
-        height: 2000px;
-        border-left: 3px green dashed;
-        position: absolute;
-        right: 0;
-        top: -1600px;
-    }
-
-    .father {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        border: black 1px solid;
-        overflow: hidden;
-        background-color: #DEDDDD;
-    }
-
-    #divId {
-        position: absolute;
-        width: 109px;
-        height: 109px;
-        top: 25px;
-        left: 20px;
-        padding: 0;
-        margin: 0;
-        background-color: #DEDDDD;
-        /*animation: rotate 200ms linear infinite;
-        -webkit-animation: mymove 500ms ease infinite;
-        -moz-animation: mymove 500ms ease infinite;*/
-    }
-    @keyframes isShooted {
-        0% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    @keyframes rotate {
-        0% {
-            transform: rotate(0deg) scale(1);
-        }
-        100% {
-            transform: rotate(359deg) scale(0);
-        }
-    }
-    #bodyId {
-        position: relative;
-        width: 76px;
-        height: 76px;
-        border: red 2px solid;
-        border-radius: 30%;
-        margin: 0;
-        left: 15px;
-        /*animation: mymove 1s linear infinite;
-        -webkit-animation: mymove 500ms ease infinite;
-        -moz-animation: mymove 500ms ease infinite;*/
-    }
-    #shootId {
-        position: relative;
-        width: 26px;
-        height: 26px;
-        border: red 2px solid;
-        border-radius: 30%;
-        margin: 0;
-        padding: 0;
-        left: 40px;
-        /*animation: mymove 1s linear infinite;射速增加时添加动画*/
-        /*-webkit-animation: mymove 500ms ease infinite;
-        -moz-animation: mymove 500ms ease infinite;*/
-    }
-    @keyframes mymove {
-        0% {
-            background: red;
-        }
-        33% {
-            background: #F3686D;
-        }
-        66% {
-            background: #F8A1A4;
-        }
-        100% {
-            background: #FBCFD0;
-        }
-    }
-    #bloodTip {
-        position: absolute;
-        padding: 0;
-        width: 81px;
-        height: 6px;
-        border: red 2px solid;
-        border-radius: 10%;
-        top: 5px;
-        left: 30px;
-    }
-    #blood {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        background-color: red;
-        width: 81px;
-        height: 100%;
-    }
-
-    #divId2 {
-        position: absolute;
-        width: 109px;
-        height: 109px;
-        right: 20px;
-        bottom: 20px;
-        padding: 0;
-        margin: 0;
-        background-color: #DEDDDD;
-        /*animation: rotate 200ms linear infinite;
-        -webkit-animation: mymove 500ms ease infinite;
-        -moz-animation: mymove 500ms ease infinite;*/
-    }
-    #bodyId2 {
-        position: relative;
-        width: 76px;
-        height: 76px;
-        border: black 2px solid;
-        border-radius: 30%;
-        margin: 0;
-        left: 15px;
-        /*animation: mymove2 1s linear infinite;
-        -webkit-animation: mymove2 500ms ease infinite;
-        -moz-animation: mymove2 500ms ease infinite;*/
-    }
-    #shootId2 {
-        position: relative;
-        width: 26px;
-        height: 26px;
-        border: black 2px solid;
-        border-radius: 30%;
-        margin: 0;
-        padding: 0;
-        left: 40px;
-        /*animation: mymove2 1s linear infinite;*//*射速增加时添加动画*/
-        /*-webkit-animation: mymove 500ms ease infinite;
-        -moz-animation: mymove 500ms ease infinite;*/
-    }
-    @keyframes mymove2 {
-        0% {
-            background: black;
-        }
-        33% {
-            background: #595959;
-        }
-        66% {
-            background: #A6A6A6;
-        }
-        100% {
-            background: white;
-        }
-    }
-    #bloodTip2 {
-        position: absolute;
-        padding: 0;
-        width: 81px;
-        height: 6px;
-        border: black 2px solid;
-        border-radius: 10%;
-        right: 30px;
-        bottom: 140px;
-    }
-    #blood2 {
-        position: relative;
-        padding: 0;
-        margin: 0;
-        background-color: black;
-        width: 81px;
-        height: 100%;
-    }
-
-    #wheelId1 {
-        position: relative;
-        overflow: hidden;
-        width: 15px;
-        height: 60px;
-        border-radius: 40%;
-        margin: 0;
-        padding: 0;
-        top: -70px;
-        border: none;
-        /*animation: wheelMove 1s linear infinite;*/
-    }
-    #wheelId2 {
-        position: relative;
-        overflow: hidden;
-        width: 15px;
-        height: 60px;
-        border-radius: 40%;
-        margin: 0;
-        padding: 0;
-        top: -130px;
-        left: 95px;
-        border: none;
-        /*animation: wheelMove 1s linear infinite;*/
-    }
-    @keyframes wheelMove {
-        0% {
-            background: red;
-        }
-        33% {
-            background: #F3686D;
-        }
-        66% {
-            background: #F8A1A4;
-        }
-        100% {
-            background: #FBCFD0;
-        }
-    }
-
-    #wheelId3 {
-        position: relative;
-        overflow: hidden;
-        width: 15px;
-        height: 60px;
-        border-radius: 40%;
-        margin: 0;
-        padding: 0;
-        top: -70px;
-        border: none;
-        /*animation: wheelMove2 1s linear infinite;*/
-    }
-    #wheelId4 {
-        position: relative;
-        overflow: hidden;
-        width: 15px;
-        height: 60px;
-        border-radius: 40%;
-        margin: 0;
-        padding: 0;
-        top: -130px;
-        left: 95px;
-        border: none;
-        /*animation: wheelMove2 1s linear infinite;*/
-    }
-    @keyframes wheelMove2 {
-        0% {
-            background: black;
-        }
-        33% {
-            background: #595959;
-        }
-        66% {
-            background: #A6A6A6;
-        }
-        100% {
-            background: white;
-        }
-    }
-</style>
 <body>
 <script type="text/javascript">
     $(function () {
@@ -512,6 +29,7 @@
         let wheelObj2 = document.getElementById("wheelId2");
         let wheelObj3 = document.getElementById("wheelId3");
         let wheelObj4 = document.getElementById("wheelId4");
+        let burnLightXObj = document.getElementById("burnLightX");
         let top = false, bottom = false, left = false, right = false;
         let top2 = false, bottom2 = false, left2 = false, right2 = false;
         //定义变量保存div方位
@@ -1688,6 +1206,68 @@
             }
         }, 16000);
 
+        //随机激光效果
+        setInterval(function () {
+            let chars = Math.floor(Math.random() * 7) + 1;//1-7整数
+            $(burnLightXObj).css("display","block");
+            burnLightXObj.style.left = Math.random() * (winWidth - 100) + "px";
+            let rand = Math.random();
+            if (rand > 0.5) {
+                burnLightXObj.style.top = "0px";
+            }
+            switch (chars) {
+                case 1:
+                    $(burnLightXObj).css("background-color","#B21016");
+                    burnLightXObj.style.animation = "light1 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 2:
+                    $(burnLightXObj).css("background-color","#BF5B16");
+                    burnLightXObj.style.animation = "light2 800ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 3:
+                    $(burnLightXObj).css("background-color","#138535");
+                    burnLightXObj.style.animation = "light3 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 4:
+                    $(burnLightXObj).css("background-color","#007AAE");
+                    burnLightXObj.style.animation = "light4 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 5:
+                    $(burnLightXObj).css("background-color","#232B99");
+                    burnLightXObj.style.animation = "light5 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 6:
+                    $(burnLightXObj).css("background-color","#7A297B");
+                    burnLightXObj.style.animation = "light6 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+                case 7:
+                    $(burnLightXObj).css("background-color","#BFB500");
+                    burnLightXObj.style.animation = "light7 1000ms linear infinite";
+                    setTimeout(function () {
+                        lightStart();
+                    },2000);
+                    break;
+            }
+        },10000);
+
         //1号2号相撞
         function cashBoth() {
             let divObjTop = divObj.offsetTop;
@@ -2012,6 +1592,19 @@
             }
         }
 
+        //激光开始
+        function lightStart() {
+            $(burnLightXObj).animate({height:winHeight + "px"},800,"linear",changeBack);
+        }
+        function changeBack() {
+            setTimeout(function () {
+                $(burnLightXObj).animate({height: "20px"}, 800, "linear",distroyLight);
+            }, 2000)
+        }
+        function distroyLight() {
+            $(burnLightXObj).css("display","none");
+        }
+
         //更换背景颜色
         let color = 0;
         $(document).keydown(function (event) {
@@ -2049,6 +1642,7 @@
     }
 </script>
 <div class="father">
+    <!--移速-->
     <div id="moveFaster" class="dashed-box3" style="position:absolute;width: 60px;height: 60px;
                                                     border-radius: 30%;border: none;margin: 0;text-align: center;
                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
@@ -2059,7 +1653,7 @@
         <h5 style="margin-top: 5px;margin-bottom:0;color: darkblue">移速+60%</h5>
         <h5 class="moveFaster" style="margin-top: 0;color: darkblue">(7s)</h5>
     </div>
-
+    <!--射速-->
     <div id="shootFaster" class="dashed-box4" style="position:absolute;width: 60px;height: 60px;
                                                      border-radius: 30%;border: none;margin: 0;text-align: center;
                                                      padding: 0;overflow: hidden;display: none;transition: all 300ms">
@@ -2070,7 +1664,7 @@
         <h5 style="margin-top: 5px;margin-bottom:0;color: orangered">射速+60%</h5>
         <h5 class="shootFaster" style="margin-top: 0;color: orangered">(7s)</h5>
     </div>
-
+    <!--对角移动-->
     <div id="moveOpposite" class="dashed-box5" style="position:absolute;width: 60px;height: 60px;
                                                      border-radius: 30%;border: none;margin: 0;text-align: center;
                                                      padding: 0;overflow: hidden;display: none;transition: all 300ms">
@@ -2081,7 +1675,7 @@
         <h5 style="margin-top: 15px;margin-bottom:0;color: goldenrod">对角移动</h5>
         <h5 class="moveOpposite" style="margin-top: 0;color: goldenrod">(7s)</h5>
     </div>
-
+    <!--回复生命-->
     <div id="getPill" class="dashed-box6" style="position:absolute;width: 60px;height: 60px;
                                                      border-radius: 30%;border: none;margin: 0;text-align: center;
                                                      padding: 0;overflow: hidden;display: none;transition: all 300ms">
@@ -2092,6 +1686,8 @@
         <h5 style="margin-top: 15px;margin-bottom:0;color: green">回复生命</h5>
         <h5 class="getPill" style="margin-top: 0;color: green">(7s)</h5>
     </div>
+    <!--激光效果-->
+    <div id="burnLightX"></div>
 
     <!--1号坦克-->
     <div id="bloodTip">
