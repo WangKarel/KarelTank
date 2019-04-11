@@ -2,9 +2,18 @@
     position: absolute;
     width: 10px;
     height: 20px;
-    /*animation: light1 1000ms linear infinite;*/
+    /*animation: light1 800ms linear infinite;*/
     display: none;
     bottom: 0;
+}
+
+#burnLightY {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    /*animation: light1 1000ms linear infinite;*/
+    display: none;
+    right: 0;
 }
 
 @keyframes light1 {
