@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tankv1.06</title>
+    <link rel="stylesheet" type="text/css" href="css/float.css" />
+    <link rel="stylesheet" type="text/css" href="css/tank.css" />
+    <link rel="stylesheet" type="text/css" href="css/burnLight.css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    //重新开始
+    function reloadPage() {
+        window.location.reload();
+    }
+</script>
+<div class="father">
+    <!--移速-->
+    <div id="moveFaster" class="dashed-box3" style="position:absolute;width: 60px;height: 60px;
+                                                    border-radius: 30%;border: none;margin: 0;text-align: center;
+                                                    padding: 0;overflow: hidden;display: none;transition: all 300ms">
+        <div class="dashed-top3"></div>
+        <div class="dashed-left3"></div>
+        <div class="dashed-right3"></div>
+        <div class="dashed-bottom3"></div>
+        <h5 style="margin-top: 5px;margin-bottom:0;color: darkblue">移速+60%</h5>
+        <h5 class="moveFaster" style="margin-top: 0;color: darkblue">(7s)</h5>
+    </div>
+    <!--射速-->
+    <div id="shootFaster" class="dashed-box4" style="position:absolute;width: 60px;height: 60px;
+                                                     border-radius: 30%;border: none;margin: 0;text-align: center;
+                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
+        <div class="dashed-top4"></div>
+        <div class="dashed-left4"></div>
+        <div class="dashed-right4"></div>
+        <div class="dashed-bottom4"></div>
+        <h5 style="margin-top: 5px;margin-bottom:0;color: orangered">射速+60%</h5>
+        <h5 class="shootFaster" style="margin-top: 0;color: orangered">(7s)</h5>
+    </div>
+    <!--对角移动-->
+    <div id="moveOpposite" class="dashed-box5" style="position:absolute;width: 60px;height: 60px;
+                                                     border-radius: 30%;border: none;margin: 0;text-align: center;
+                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
+        <div class="dashed-top5"></div>
+        <div class="dashed-left5"></div>
+        <div class="dashed-right5"></div>
+        <div class="dashed-bottom5"></div>
+        <h5 style="margin-top: 15px;margin-bottom:0;color: goldenrod">对角移动</h5>
+        <h5 class="moveOpposite" style="margin-top: 0;color: goldenrod">(7s)</h5>
+    </div>
+    <!--回复生命-->
+    <div id="getPill" class="dashed-box6" style="position:absolute;width: 60px;height: 60px;
+                                                     border-radius: 30%;border: none;margin: 0;text-align: center;
+                                                     padding: 0;overflow: hidden;display: none;transition: all 300ms">
+        <div class="dashed-top6"></div>
+        <div class="dashed-left6"></div>
+        <div class="dashed-right6"></div>
+        <div class="dashed-bottom6"></div>
+        <h5 style="margin-top: 15px;margin-bottom:0;color: green">回复生命</h5>
+        <h5 class="getPill" style="margin-top: 0;color: green">(7s)</h5>
+    </div>
+    <!--激光效果-->
+    <div id="burnLightX"></div>
+    <div id="burnLightY"></div>
+
+    <!--1号坦克-->
+    <div id="bloodTip">
+        <div id="blood"></div>
+    </div>
+    <div id="divId">
+        <div id="shootId"></div>
+        <div id="bodyId" style="text-align: center;">
+            <h2 style="color: red">1号</h2>
+        </div>
+        <div id="wheelId1" class="dashed-box">
+            <div class="dashed-top"></div>
+            <div class="dashed-left"></div>
+            <div class="dashed-right"></div>
+            <div class="dashed-bottom"></div>
+        </div>
+        <div id="wheelId2" class="dashed-box">
+            <div class="dashed-top"></div>
+            <div class="dashed-left"></div>
+            <div class="dashed-right"></div>
+            <div class="dashed-bottom"></div>
+        </div>
+    </div>
+
+    <!--2号坦克-->
+    <div id="bloodTip2">
+        <div id="blood2"></div>
+    </div>
+    <div id="divId2">
+        <div id="shootId2"></div>
+        <div id="bodyId2" style="text-align: center;">
+            <h2>2号</h2>
+        </div>
+        <div id="wheelId3" class="dashed-box2">
+            <div class="dashed-top2"></div>
+            <div class="dashed-left2"></div>
+            <div class="dashed-right2"></div>
+            <div class="dashed-bottom2"></div>
+        </div>
+        <div id="wheelId4" class="dashed-box2">
+            <div class="dashed-top2"></div>
+            <div class="dashed-left2"></div>
+            <div class="dashed-right2"></div>
+            <div class="dashed-bottom2"></div>
+        </div>
+    </div>
+</div>
+
+<div class="message">
+    <a href="#" style="color: black" onclick="reloadPage()"><h3 style="margin-top: 12px">重新开始</h3></a>
+</div>
+
+<!-- 遮罩层 -->
+<div class="cover"></div>
+<script type="text/javascript" src="js/allObj.js"></script>
+<script type="text/javascript" src="js/float.js"></script>
+<script type="text/javascript" src="js/tank.js"></script>
+<script type="text/javascript" src="js/elements.js"></script>
+<script type="text/javascript" src="js/blood.js"></script>
+</body>
+</html>

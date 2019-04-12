@@ -284,7 +284,7 @@
         });
 
         //子弹发射按钮（1号：k   2号：enter）
-        let ziDanMove1 = "",ziDanMove2 = "",ziDanMove3 = "",ziDanMove4 = "",ziDanMove5 = "",ziDanMove6 = "",ziDanMove7 = "",ziDanMove8 = "";
+        let ziDanMove1,ziDanMove2,ziDanMove3,ziDanMove4,ziDanMove5,ziDanMove6,ziDanMove7,ziDanMove8;
         $(document).keypress(function (event) {
             let keyNum = event.which;
             //alert(keyNum)
@@ -1160,11 +1160,23 @@
             let lightW = parseInt($(burnLightXObj).css("width"));
             let lightXTop = burnLightXObj.offsetTop;
             let lightXLeft = burnLightXObj.offsetLeft;
+            let lightYTop = burnLightYObj.offsetTop;
+            let lightYLeft = burnLightYObj.offsetLeft;
             if (lightXLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightXLeft && lightXTop+lightH+110>divObjTop+110 && divObjTop+110>lightXTop) {
                 //判定1号掉血
                 clearInterval(light);
                 tankDestroy1();
             }else if (lightXLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightXLeft && lightXTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightXTop) {
+                //判定2号掉血
+                clearInterval(light);
+                tankDestroy2();
+            }
+
+            if (lightYLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightYLeft && lightYTop+lightH+110>divObjTop+110 && divObjTop+110>lightYTop) {
+                //判定1号掉血
+                clearInterval(light);
+                tankDestroy1();
+            }else if (lightYLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightYLeft && lightYTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightYTop) {
                 //判定2号掉血
                 clearInterval(light);
                 tankDestroy2();
@@ -1197,14 +1209,7 @@
                     $(".cover").css("display","block");
                     $(".message").css("display","block");
                     stopAll();
-                },480);
-                let seconds = 4;
-                setInterval(function () {
-                    seconds--;
-                    if (seconds >= 0)
-                        $(".message").find("h3").html('重新开始('+seconds+'s)');
-                    else window.location.reload();
-                },1000)
+                },480)
             }else if ($(blood).css("width") === "54px") {
                 $(blood).css("width","27px");
                 ifShoot = 1;
@@ -1237,14 +1242,7 @@
                     $(".cover").css("display","block");
                     $(".message").css("display","block");
                     stopAll();
-                },480);
-                let seconds = 4;
-                setInterval(function () {
-                    seconds--;
-                    if (seconds >= 0)
-                        $(".message").find("h3").html('重新开始('+seconds+'s)');
-                    else window.location.reload();
-                },1000)
+                },480)
             }else if ($(blood2).css("width") === "54px") {
                 $(blood2).css("width","27px");
                 ifShoot2 = 1;
@@ -1279,13 +1277,6 @@
                 $(".message").css("display","block");
                 stopAll();
             },480);
-            let seconds = 4;
-            setInterval(function () {
-                seconds--;
-                if (seconds >= 0)
-                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                else window.location.reload();
-            },1000)
         }
         function tankDestroy2() {
             //子弹击中坦克2
@@ -1297,13 +1288,6 @@
                 $(".message").css("display","block");
                 stopAll();
             },480);
-            let seconds = 4;
-            setInterval(function () {
-                seconds--;
-                if (seconds >= 0)
-                    $(".message").find("h3").html('重新开始('+seconds+'s)');
-                else window.location.reload();
-            },1000)
         }
 
         //获得移速加强
@@ -1784,7 +1768,7 @@
 </div>
 
 <div class="message">
-    <a href="#" style="color: black" onclick="reloadPage()"><h3 style="margin-top: 12px">重新开始(3s)</h3></a>
+    <a href="#" style="color: black" onclick="reloadPage()"><h3 style="margin-top: 12px">重新开始</h3></a>
 </div>
 
 <!-- 遮罩层 -->
