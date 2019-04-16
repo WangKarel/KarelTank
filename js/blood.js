@@ -97,6 +97,7 @@ function stopAll() {
     clearInterval(moveNum2);
     clearInterval(strong);
     clearInterval(lightStrong);
+    clearInterval(superLights);
     clearInterval(sing);
     clearInterval(a);
     clearInterval(b);

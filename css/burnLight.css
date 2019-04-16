@@ -7,6 +7,36 @@
     bottom: 0;
 }
 
+#burnLightX1 {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    /*animation: light1 800ms linear infinite;*/
+    display: none;
+    bottom: 0;
+    left: 33%;
+}
+
+#burnLightX2 {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    /*animation: light1 800ms linear infinite;*/
+    display: none;
+    top: 0;
+    left: 49%;
+}
+
+#burnLightX3 {
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    /*animation: light1 800ms linear infinite;*/
+    display: none;
+    bottom: 0;
+    right: 33%;
+}
+
 #burnLightY {
     position: absolute;
     width: 20px;
@@ -14,6 +44,36 @@
     /*animation: light1 1000ms linear infinite;*/
     display: none;
     right: 0;
+}
+
+#burnLightY1 {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    /*animation: light1 1000ms linear infinite;*/
+    display: none;
+    right: 0;
+    top: 33%;
+}
+
+#burnLightY2 {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    /*animation: light1 1000ms linear infinite;*/
+    display: none;
+    left: 0;
+    top: 49%;
+}
+
+#burnLightY3 {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    /*animation: light1 1000ms linear infinite;*/
+    display: none;
+    right: 0;
+    bottom: 33%;
 }
 
 @keyframes light1 {

@@ -154,11 +154,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light1 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 2:
@@ -166,11 +166,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light2 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 3:
@@ -178,11 +178,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light3 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 4:
@@ -190,11 +190,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light4 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 5:
@@ -202,11 +202,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light5 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 6:
@@ -214,11 +214,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light6 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
             case 7:
@@ -226,11 +226,11 @@ let lightStrong = setInterval(function () {
                 burnLightXObj.style.animation = "light7 800ms linear infinite";
                 //判断坦克和激光是否相撞
                 light = setInterval(function () {
-                    lightTankCash();
+                    lightTankCash(burnLightXObj,burnLightYObj);
                 },50);
                 //开始发射激光
                 setTimeout(function () {
-                    lightStartX();
+                    lightStartX(burnLightXObj);
                 },2000);
                 break;
         }
@@ -330,9 +330,198 @@ let lightStrong = setInterval(function () {
     }
 },10000);
 
+//超强光效果
+let sixLights;
+let superLights = setInterval(function () {
+    //随机6条颜色激光
+    for (let i = 1; i < 7; i++) {
+        if (i <= 3) {
+            let lightObjX = document.getElementById("burnLightX"+i);
+            let lightObjY = document.getElementById("burnLightY"+i);
+            let chars = Math.floor(Math.random() * 7) + 1;//1-7整数
+            switch (chars) {
+                case 1:
+                    $(lightObjX).css("background-color","#B21016");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 2:
+                    $(lightObjX).css("background-color","#BF5B16");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 3:
+                    $(lightObjX).css("background-color","#138535");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 4:
+                    $(lightObjX).css("background-color","#007AAE");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 5:
+                    $(lightObjX).css("background-color","#232B99");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 6:
+                    $(lightObjX).css("background-color","#7A297B");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+                case 7:
+                    $(lightObjX).css("background-color","#BFB500");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartX(lightObjX);
+                    },2000);
+                    break;
+            }
+        }else {
+            let lightObjX = document.getElementById("burnLightX"+(i-3));
+            let lightObjY = document.getElementById("burnLightY"+(i-3));
+            let chars = Math.floor(Math.random() * 7) + 1;//1-7整数
+            switch (chars) {
+                case 1:
+                    $(lightObjY).css("background-color","#B21016");
+                    lightObjY.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 2:
+                    $(lightObjX).css("background-color","#BF5B16");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 3:
+                    $(lightObjX).css("background-color","#138535");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 4:
+                    $(lightObjX).css("background-color","#007AAE");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 5:
+                    $(lightObjX).css("background-color","#232B99");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 6:
+                    $(lightObjX).css("background-color","#7A297B");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+                case 7:
+                    $(lightObjX).css("background-color","#BFB500");
+                    lightObjX.style.animation = "light1 800ms linear infinite";
+                    //判断坦克和激光是否相撞
+                    sixLights = setInterval(function () {
+                        lightTankCash(lightObjX,lightObjY);
+                    },50);
+                    //开始发射激光
+                    setTimeout(function () {
+                        lightStartY(lightObjY);
+                    },2000);
+                    break;
+            }
+        }
+    }
+},20000);
+
 
 //激光和坦克相撞
-function lightTankCash() {
+function lightTankCash(burnLightXObj,burnLightYObj) {
     let divObjTop = divObj.offsetTop;
     let divObjLeft = divObj.offsetLeft;
     let divObj2Top = divObj2.offsetTop;
@@ -344,21 +533,21 @@ function lightTankCash() {
     let lightXLeft = burnLightXObj.offsetLeft;
     let lightYTop = burnLightYObj.offsetTop;
     let lightYLeft = burnLightYObj.offsetLeft;
-    if (lightXLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightXLeft && lightXTop+lightH+110>divObjTop+110 && divObjTop+110>lightXTop) {
+    if (lightXLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightXLeft && lightXTop+lightH+110>divObjTop+110 && divObjTop+110>lightXTop && burnLightXObj.style.display === "block") {
         //判定1号掉血
         clearInterval(light);
         tankDestroy1();
-    }else if (lightXLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightXLeft && lightXTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightXTop) {
+    }else if (lightXLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightXLeft && lightXTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightXTop && burnLightXObj.style.display === "block") {
         //判定2号掉血
         clearInterval(light);
         tankDestroy2();
     }
 
-    if (lightYLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightYLeft && lightYTop+lightH+110>divObjTop+110 && divObjTop+110>lightYTop) {
+    if (lightYLeft+lightW+110>divObjLeft+110 && divObjLeft+110>lightYLeft && lightYTop+lightH+110>divObjTop+110 && divObjTop+110>lightYTop && burnLightXObj.style.display === "block") {
         //判定1号掉血
         clearInterval(light);
         tankDestroy1();
-    }else if (lightYLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightYLeft && lightYTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightYTop) {
+    }else if (lightYLeft+lightW+110>divObj2Left+110 && divObj2Left+110>lightYLeft && lightYTop+lightH+110>divObj2Top+110 && divObj2Top+110>lightYTop && burnLightXObj.style.display === "block") {
         //判定2号掉血
         clearInterval(light);
         tankDestroy2();
@@ -659,29 +848,29 @@ function getBlood() {
 }
 
 //激光开始X
-function lightStartX() {
-    $(burnLightXObj).animate({height:winHeight2 + "px"},800,"linear",changeBackX);
+function lightStartX(objX) {
+    $(objX).animate({height:winHeight2 + "px"},800,"linear",changeBackX(objX));
 }
-function changeBackX() {
+function changeBackX(objX) {
     setTimeout(function () {
-        $(burnLightXObj).animate({height: "20px"}, 800, "linear",destroyLightX);
+        $(objX).animate({height: "20px"}, 800, "linear",destroyLightX(objX));
     }, 2000)
 }
-function destroyLightX() {
-    $(burnLightXObj).css("display","none");
+function destroyLightX(objX) {
+    $(objX).css("display","none");
 }
 
 //激光开始Y
-function lightStartY() {
-    $(burnLightYObj).animate({width:winWidth2 + "px"},1000,"linear",changeBackY);
+function lightStartY(objY) {
+    $(objY).animate({width:winWidth2 + "px"},1000,"linear",changeBackY(objY));
 }
-function changeBackY() {
+function changeBackY(objY) {
     setTimeout(function () {
-        $(burnLightYObj).animate({width: "20px"}, 1000, "linear",destroyLightY);
+        $(objY).animate({width: "20px"}, 1000, "linear",destroyLightY(objY));
     }, 2000)
 }
-function destroyLightY() {
-    $(burnLightYObj).css("display","none");
+function destroyLightY(objY) {
+    $(objY).css("display","none");
 }
 
 //更换背景颜色
