@@ -1,5 +1,4 @@
 # KarelTank
-my little game number one
 
 操作提示:
 
